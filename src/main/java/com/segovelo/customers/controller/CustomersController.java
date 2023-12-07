@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import com.segovelo.customers.beans.request.Customer;
 import com.segovelo.customers.beans.request.RequestAttributes;
-import com.segovelo.customers.beans.response.RetrieveCustomerResponse;
+import com.segovelo.customers.beans.response.RetrieveCustomersResponse;
 import com.segovelo.customers.beans.response.SaveCustomersResponse;
 import com.segovelo.customers.service.CustomersService;
 import static com.segovelo.customers.constants.CustomersConstants.CUST_RETRIEVE_ENDPOINT;
@@ -37,22 +37,26 @@ public class CustomersController {
 	private CustomersService service;
 	
 	@PostMapping(value = CUST_SAVE_ENDPOINT, produces = CONTENT_TYPE_VALUE)
-	public SaveCustomersResponse saveCustomers(@RequestBody RequestAttributes requestBody, @RequestHeader HttpHeaders requestHeaders) throws Exception {
+	public ResponseEntity<SaveCustomersResponse> saveCustomers(@RequestBody RequestAttributes requestBody, @RequestHeader HttpHeaders requestHeaders) throws Exception {
 	    logger.debug("Inside controller.saveCustomers");
 	    logger.debug("Request body: {}", requestBody.toString());
 		SaveCustomersResponse saveCustomersResponse = service.saveCustomers(requestBody, requestHeaders);
 	    logger.debug("Returning response : {}", saveCustomersResponse.toString());
-		return saveCustomersResponse;
+	    return new ResponseEntity<>(saveCustomersResponse, saveCustomersResponse.getStatus());
 	}
 	
 	@GetMapping(value = CUST_RETRIEVE_ENDPOINT, produces = CONTENT_TYPE_VALUE)
-	public ResponseEntity<Customer> retrieveCustomer(@RequestParam(value="customersRef", required=true) String customerRef, 
+	public <T> ResponseEntity<T> retrieveCustomer(@RequestParam(value="customerRef", required=true) String customerRef, 
 			@RequestHeader HttpHeaders requestHeaders) throws Exception {
 	    logger.debug("Inside controller.retrieveCustomers");
 	    logger.debug("Retrieve customer with customerRef: {}", customerRef);
 		Customer customerResponse = service.retrieveCustomer(customerRef, requestHeaders);
-	    logger.debug("Returning response : {}", customerResponse.toString());	    
-		return new ResponseEntity<>(customerResponse, HttpStatus.OK);
+		if (customerResponse != null) {
+		    logger.debug("Returning response : {}", customerResponse.toString());	    
+			return new ResponseEntity<T>((T) customerResponse, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<T>((T)"Customer Not Found", HttpStatus.NOT_FOUND);
+		}
 	}
 
 }

@@ -10,7 +10,7 @@ import com.segovelo.customers.beans.request.Customer;
 *
 * @author Segovelo  **/
 
-public class RetrieveCustomerResponse {
+public class RetrieveCustomersResponse {
 	
 	private List<Customer> customers;
 

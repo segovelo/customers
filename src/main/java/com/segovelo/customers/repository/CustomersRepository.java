@@ -21,7 +21,7 @@ import com.segovelo.customers.beans.response.SaveCustomersResponse;
 @Repository
 public interface CustomersRepository extends MongoRepository<Customer, String>{
 	
-	public SaveCustomersResponse saveCustomers(RequestAttributes requestBody, HttpHeaders httpHeaders);
+	//public SaveCustomersResponse saveCustomers(RequestAttributes requestBody, HttpHeaders httpHeaders);
 
 	//public Optional<Customer> findById(@Param("customerRef") String customerRef);
 }

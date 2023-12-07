@@ -4,7 +4,7 @@ import org.springframework.http.HttpHeaders;
 
 import com.segovelo.customers.beans.request.Customer;
 import com.segovelo.customers.beans.request.RequestAttributes;
-import com.segovelo.customers.beans.response.RetrieveCustomerResponse;
+import com.segovelo.customers.beans.response.RetrieveCustomersResponse;
 import com.segovelo.customers.beans.response.SaveCustomersResponse;
 ;
 /** 
