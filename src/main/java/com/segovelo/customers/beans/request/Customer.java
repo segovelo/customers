@@ -1,5 +1,9 @@
 package com.segovelo.customers.beans.request;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 /** 
@@ -7,9 +11,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 * @Javadoc TODO 
 *
 * @author Segovelo  **/
+
+@Document(collection = "customers")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CustomerRequest {
-	
+public class Customer {
+	@Id
 	@JsonProperty("customerRef")
 	private String customerRef;
 	
@@ -100,8 +106,8 @@ public class CustomerRequest {
 
 	@Override
 	public String toString() {
-		return "CustomerRequest [customerRef=" + customerRef + ", customerName=" + customerName + ", addressLine1="
+		return "{ customerRef=" + customerRef + ", customerName=" + customerName + ", addressLine1="
 				+ addressLine1 + ", addressLine2=" + addressLine2 + ", town=" + town + ", county=" + county
-				+ ", country=" + country + ", postcode=" + postcode + "]";
+				+ ", country=" + country + ", postcode=" + postcode + "}";
 	}
 }

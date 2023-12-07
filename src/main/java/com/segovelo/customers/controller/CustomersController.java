@@ -3,6 +3,8 @@ package com.segovelo.customers.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.segovelo.customers.beans.request.Customer;
 import com.segovelo.customers.beans.request.RequestAttributes;
 import com.segovelo.customers.beans.response.RetrieveCustomerResponse;
 import com.segovelo.customers.beans.response.SaveCustomersResponse;
@@ -43,13 +46,13 @@ public class CustomersController {
 	}
 	
 	@GetMapping(value = CUST_RETRIEVE_ENDPOINT, produces = CONTENT_TYPE_VALUE)
-	public RetrieveCustomerResponse retrieveCustomer(@RequestParam(value="customersRef", required=true) String customerRef, 
+	public ResponseEntity<Customer> retrieveCustomer(@RequestParam(value="customersRef", required=true) String customerRef, 
 			@RequestHeader HttpHeaders requestHeaders) throws Exception {
 	    logger.debug("Inside controller.retrieveCustomers");
 	    logger.debug("Retrieve customer with customerRef: {}", customerRef);
-		RetrieveCustomerResponse retrieveCustomerResponse = service.retrieveCustomer(customerRef, requestHeaders);
-	    logger.debug("Returning response : {}", retrieveCustomerResponse.toString());
-		return retrieveCustomerResponse;
+		Customer customerResponse = service.retrieveCustomer(customerRef, requestHeaders);
+	    logger.debug("Returning response : {}", customerResponse.toString());	    
+		return new ResponseEntity<>(customerResponse, HttpStatus.OK);
 	}
 
 }

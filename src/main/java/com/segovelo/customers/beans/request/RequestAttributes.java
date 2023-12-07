@@ -14,23 +14,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class RequestAttributes {
 	
 	@JsonProperty("customers")
-	private List<CustomerRequest> customers;
+	private List<Customer> customers;
 
-	public List<CustomerRequest> getCustomers() {
+	public List<Customer> getCustomers() {
 		return customers;
 	}
 
-	public void setCustomers(List<CustomerRequest> customers) {
+	public void setCustomers(List<Customer> customers) {
 		this.customers = customers;
 	}
 	
 	@Override
 	public String toString() {
 		StringBuffer customersString = new StringBuffer();
-		for(CustomerRequest customer : customers) {
+		for(Customer customer : customers) {
 			customersString.append(customer.toString());
 			customersString.append(", ");
 		}
-		return "ASPSPGetParticipantsResponse [participants = " + customersString.toString() + "]";
+		return "Customers [customers = " + customersString.toString() + "]";
 	}
 }
