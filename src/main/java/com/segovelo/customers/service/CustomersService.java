@@ -2,6 +2,8 @@ package com.segovelo.customers.service;
 
 import org.springframework.http.HttpHeaders;
 
+import com.segovelo.customers.beans.request.RequestAttributes;
+import com.segovelo.customers.beans.response.RetrieveCustomerResponse;
 import com.segovelo.customers.beans.response.SaveCustomersResponse;
 ;
 /** 
@@ -11,6 +13,7 @@ import com.segovelo.customers.beans.response.SaveCustomersResponse;
 * @author Segovelo  **/
 
 public interface CustomersService {
-	public SaveCustomersResponse saveCustomers(HttpHeaders httpHeaders);
-
+	public SaveCustomersResponse saveCustomers(RequestAttributes requestBody, HttpHeaders httpHeaders);
+	
+	public RetrieveCustomerResponse retrieveCustomer(String customerRef, HttpHeaders httpHeaders);
 }
