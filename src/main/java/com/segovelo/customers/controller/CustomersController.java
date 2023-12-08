@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import com.segovelo.customers.beans.request.Customer;
 import com.segovelo.customers.beans.request.RequestAttributes;
-import com.segovelo.customers.beans.response.RetrieveCustomersResponse;
+import com.segovelo.customers.beans.response.RetrieveCustomerResponse;
 import com.segovelo.customers.beans.response.SaveCustomersResponse;
 import com.segovelo.customers.service.CustomersService;
 import static com.segovelo.customers.constants.CustomersConstants.CUST_RETRIEVE_ENDPOINT;
@@ -46,17 +46,12 @@ public class CustomersController {
 	}
 	
 	@GetMapping(value = CUST_RETRIEVE_ENDPOINT, produces = CONTENT_TYPE_VALUE)
-	public <T> ResponseEntity<T> retrieveCustomer(@RequestParam(value="customerRef", required=true) String customerRef, 
+	public  ResponseEntity<RetrieveCustomerResponse> retrieveCustomer(@RequestParam(value="customerRef", required=true) String customerRef, 
 			@RequestHeader HttpHeaders requestHeaders) throws Exception {
 	    logger.debug("Inside controller.retrieveCustomers");
 	    logger.debug("Retrieve customer with customerRef: {}", customerRef);
-		Customer customerResponse = service.retrieveCustomer(customerRef, requestHeaders);
-		if (customerResponse != null) {
-		    logger.debug("Returning response : {}", customerResponse.toString());	    
-			return new ResponseEntity<T>((T) customerResponse, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<T>((T)"Customer Not Found", HttpStatus.NOT_FOUND);
-		}
+	    RetrieveCustomerResponse customerResponse = service.retrieveCustomer(customerRef, requestHeaders);
+	    logger.debug("Returning response : {}", customerResponse.toString());	    
+		return new ResponseEntity<>(customerResponse,customerResponse.getStatus());
 	}
-
 }

@@ -13,7 +13,7 @@ import com.segovelo.customers.beans.request.RequestAttributes;
 import com.segovelo.customers.beans.response.SaveCustomersResponse;
 
 /** 
-* 6 Dec 2023 21:54:57
+* 6 Dec 2023
 * @Javadoc TODO 
 *
 * @author Segovelo  **/
@@ -21,7 +21,4 @@ import com.segovelo.customers.beans.response.SaveCustomersResponse;
 @Repository
 public interface CustomersRepository extends MongoRepository<Customer, String>{
 	
-	//public SaveCustomersResponse saveCustomers(RequestAttributes requestBody, HttpHeaders httpHeaders);
-
-	//public Optional<Customer> findById(@Param("customerRef") String customerRef);
 }
