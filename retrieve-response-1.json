@@ -1,0 +1,14 @@
+{
+    "status": "OK",
+    "message": "Customer with ref 47c03efb-bbd8-4def-8c29-a7bf64c683c2  was found",
+    "customer": {
+        "customerRef": "47c03efb-bbd8-4def-8c29-a7bf64c683c2",
+        "customerName": "John Prescot",
+        "addressLine1": "234",
+        "addressLine2": "Cromwell Grove",
+        "town": "Manchester",
+        "county": "Lancashire",
+        "country": "United Kingdom",
+        "postcode": "M19 2RP"
+    }
+}

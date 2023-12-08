@@ -1,7 +1,8 @@
 package com.segovelo.customers.beans.response;
 
 import org.springframework.http.HttpStatus;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.segovelo.customers.beans.request.Customer;
 
 /** 
@@ -9,7 +10,8 @@ import com.segovelo.customers.beans.request.Customer;
 * @Javadoc TODO 
 *
 * @author Segovelo  **/
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RetrieveCustomerResponse {
 	
 	private HttpStatus status;
