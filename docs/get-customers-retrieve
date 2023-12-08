@@ -1,0 +1,4 @@
+GET http://localhost:8080/customers/retrieve?customerRef=47c03efb-bbd8-4def-8c29-a7bf64c683c2 HTTP/1.1
+Accept-Encoding: gzip,deflate
+Correlation-Id: e5c254ae-70fc-4552-81a4-191e709d97da
+Date: Fri 08-12-2023  19:59:52.806+0000

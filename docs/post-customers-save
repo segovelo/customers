@@ -1,0 +1,30 @@
+POST http://localhost:8080/customers/save HTTP/1.1
+Accept-Encoding: gzip,deflate
+Correlation-Id: 2aa90968-5375-4519-866b-da6cb18af3ff
+Date: Fri 08-12-2023  19:58:13.561+0000
+Content-Type: application/json
+
+{
+    "customers": [
+        {
+            "customerRef": "595cdd9e-b108-4aef-ad9f-15d994af457",
+            "customerName": "John Prescot",
+            "addressLine1": "127",
+            "addressLine2": "Cromwell Grove",
+            "town": "Manchester",
+            "county": "Lancashire",
+            "country": "United Kindom",
+            "postcode": "M19 2RP"
+        },
+        {
+            "customerRef": "beef0303-b505-407f-912b-b4a4f1db2ab7d",
+            "customerName": "John Prescot",
+            "addressLine1": "127",
+            "addressLine2": "Cromwell Grove",
+            "town": "Manchester",
+            "county": "Lancashire",
+            "country": "United Kindom",
+            "postcode": "M19 2RP"
+        }
+    ]
+}
